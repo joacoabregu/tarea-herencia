@@ -1,3 +1,8 @@
+import Subscription from './Subscription';
+import FreeSubscription from './FreeSubscription';
+import BasicSubscription from './BasicSubscription';
+import PremiumSubscription from './PremiumSubscription';
+
 class User {
     
     constructor(
@@ -5,7 +10,8 @@ class User {
         private name: string, 
         private email: string, 
         private payment: string,
-        //private subscription: Subscription
+        private subscription: FreeSubscription,
+        private access: boolean = true,
         ) {
         /* this.id = id;
         this.name = name;
@@ -35,5 +41,26 @@ class User {
         return this.payment;
     }
 
+    set setSubscription(value: "free" | "basic" | "premium") {
+        switch (value) {
+            case 'free': 
+                this.subscription = new FreeSubscription;
+            case 'basic':
+                this.subscription = new BasicSubscription;
+            case 'premium':
+                this.subscription = new PremiumSubscription;   
+        }
+    }
+    get getSubscription() {
+        return this.subscription;
+    }
+
+    checkAccess() {
+        let date: Date = new Date();
+        let expiration: Date = this.subscription.getExpiration;
+        if(expiration < date){
+            this.access = false;
+        }
+    }
 
 }
