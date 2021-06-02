@@ -56,6 +56,9 @@ export default class User {
         let expiration: Date = this.subscription.getExpiration;
         if(expiration < date){
             this.access = false;
+            return "Access denied"
+        } else {
+            return "Access granted"
         }
     }
 
