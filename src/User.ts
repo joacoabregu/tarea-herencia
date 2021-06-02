@@ -3,21 +3,17 @@ import FreeSubscription from './FreeSubscription';
 import BasicSubscription from './BasicSubscription';
 import PremiumSubscription from './PremiumSubscription';
 
-class User {
+export default class User {
     
     constructor(
         private id: number,
         private name: string, 
         private email: string, 
         private payment: string,
-        private subscription: FreeSubscription,
+        private subscription: Subscription = new FreeSubscription,
         private access: boolean = true,
         ) {
-        /* this.id = id;
-        this.name = name;
-        this.email = email;
-        this.payment = payment;
-        this.subscription = subscription; */
+        
 
     }
     set setName(value: string) {
